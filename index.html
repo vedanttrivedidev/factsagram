@@ -6,28 +6,28 @@
 <meta name="theme-color" content="#14110f">
 <meta name="apple-mobile-web-app-capable" content="yes">
 <meta name="mobile-web-app-capable" content="yes">
-<title>FactScroll</title>
+<title>Factsagram</title>
 <style>
-:root{--ink:#14110f}
+:root{--ink:#14110f;--on:#fff}
 *{box-sizing:border-box;margin:0;-webkit-tap-highlight-color:transparent}
 html,body{height:100%;background:var(--ink);overflow:hidden;font-family:"Helvetica Neue",Arial,sans-serif;color:var(--ink)}
 #app{position:relative;max-width:480px;height:100dvh;margin:0 auto;overflow:hidden}
 #feed{height:100%;overflow-y:scroll;scroll-snap-type:y mandatory;overscroll-behavior:contain;scrollbar-width:none}
 #feed::-webkit-scrollbar{display:none}
 .card{position:relative;height:100dvh;scroll-snap-align:start;scroll-snap-stop:always;display:flex;flex-direction:column;justify-content:center;padding:110px 84px 120px 26px;overflow:hidden;user-select:none}
-.deco{position:absolute;left:-18px;bottom:-40px;font-size:230px;line-height:1;opacity:.9;transform:rotate(-8deg);pointer-events:none}
+
 .cat{align-self:flex-start;font-size:15px;font-weight:700;border:2px solid var(--ink);border-radius:99px;padding:5px 14px;margin-bottom:22px}
 .fact{font-size:clamp(27px,7.6vw,38px);font-weight:900;line-height:1.1;letter-spacing:-.025em;text-wrap:pretty}
 .rail{position:absolute;right:14px;bottom:calc(130px + env(safe-area-inset-bottom));display:flex;flex-direction:column;gap:20px;align-items:center}
 .rail button{width:54px;height:54px;border-radius:50%;border:2px solid var(--ink);background:transparent;color:var(--ink);font:800 22px/1 inherit;display:grid;place-items:center;cursor:pointer;transition:transform .15s}
 .rail button:active{transform:scale(.88)}
-.rail button.on{background:var(--ink);color:#fff}
+.rail button.on{background:var(--ink);color:var(--on)}
 .rail small{display:block;font:700 11px/1 inherit;margin-top:-14px;text-align:center}
 .top{position:absolute;z-index:5;top:0;left:0;right:0;display:flex;align-items:center;justify-content:space-between;padding:calc(14px + env(safe-area-inset-top)) 18px 0;color:var(--ink);pointer-events:none}
 .top>*{pointer-events:auto}
 .tabs{display:flex;gap:6px;background:#14110f1f;border-radius:99px;padding:4px}
 .tabs button{border:0;background:none;font:700 14px inherit;padding:7px 16px;border-radius:99px;color:var(--ink);cursor:pointer}
-.tabs button[aria-selected=true]{background:var(--ink);color:#fff}
+.tabs button[aria-selected=true]{background:var(--ink);color:var(--on)}
 #count{font-weight:800;font-size:14px}
 .burst{position:absolute;font-size:120px;pointer-events:none;animation:pop .7s ease-out forwards}
 @keyframes pop{0%{transform:translate(-50%,-50%) scale(.3);opacity:1}60%{transform:translate(-50%,-50%) scale(1.15);opacity:1}100%{transform:translate(-50%,-70%) scale(1.2);opacity:0}}
@@ -48,19 +48,34 @@ html,body{height:100%;background:var(--ink);overflow:hidden;font-family:"Helveti
 .panel .x{position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:50%;border:2px solid var(--ink);background:none;font-size:16px;font-weight:800;cursor:pointer}
 #chips{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:18px}
 #chips button{border:2px solid var(--ink);background:transparent;border-radius:99px;padding:8px 14px;font:700 14px inherit;cursor:pointer}
-#chips button.on{background:var(--ink);color:#fff}
+#chips button.on{background:var(--ink);color:var(--on)}
 .panel textarea,.panel input[type=text]{width:100%;border:2px solid var(--ink);border-radius:12px;padding:10px;font:500 15px inherit;background:#fff;margin-bottom:10px}
 .panel .row{display:flex;gap:10px;justify-content:flex-end;margin-top:8px}
 .panel .row button{border:2px solid var(--ink);border-radius:99px;padding:10px 18px;font:800 14px inherit;cursor:pointer;background:transparent}
-.panel .row .go{background:var(--ink);color:#fff}
+.panel .row .go{background:var(--ink);color:var(--on)}
 #addMsg{font-weight:700;font-size:14px;margin-top:8px}
+
+#app{color:var(--ink)}
+.deco{position:absolute;right:-130px;bottom:-130px;width:440px;height:440px;border-radius:50%;background:repeating-radial-gradient(circle,transparent 0 22px,color-mix(in srgb,var(--ink) 14%,transparent) 22px 24px);pointer-events:none}
+.card::after{content:"";position:absolute;inset:0;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='160' height='160'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");opacity:.16;mix-blend-mode:overlay;pointer-events:none}
+.cat,.fact{position:relative;z-index:1}
+.rail{z-index:2}
+.tabs{background:color-mix(in srgb,var(--ink) 14%,transparent)}
+.row1{display:flex;justify-content:space-between;align-items:center;width:100%}
+.av{width:36px;height:36px;border-radius:50%;border:2px solid var(--ink);background:none;color:var(--ink);font:800 15px inherit;cursor:pointer}
+#profiles,#themes{display:flex;flex-wrap:wrap;gap:8px;margin-bottom:14px}
+#profiles button,#themes button{border:2px solid var(--ink);background:transparent;color:var(--ink);border-radius:99px;padding:8px 14px;font:700 14px inherit;cursor:pointer}
+#themes button.on{background:var(--ink);color:var(--on)}
+.panel{--ink:#14110f;--on:#fff;color:var(--ink)}
+.panel h3{font-size:15px;margin:14px 0 8px}
+.panel input[type=password]{width:100%;border:2px solid var(--ink);border-radius:12px;padding:10px;font:500 15px inherit;background:#fff;margin-bottom:10px}
 </style>
 </head>
 <body>
 <div id="app">
   <div class="top">
-    <div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-tab="all">For you</button><button role="tab" aria-selected="false" data-tab="saved">Saved</button></div>
-    <div class="tools"><button id="bTopics">Topics</button><button id="bAdd">+ Fact</button><span id="count"></span></div>
+    <div class="row1"><div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-tab="all">For you</button><button role="tab" aria-selected="false" data-tab="saved">Saved</button></div><button id="bMe" class="av" aria-label="Profile"></button></div>
+    <div class="tools"><button id="bTopics">Topics</button><button id="bAdd">+ Fact</button><button id="bTheme" aria-label="Change theme">◐</button><span id="count"></span></div>
   </div>
   <div id="feed" tabindex="0"></div>
   <div class="hint" id="hint">Swipe up for the next fact</div>
@@ -74,18 +89,32 @@ html,body{height:100%;background:var(--ink);overflow:hidden;font-family:"Helveti
 <input type="text" id="newCat" maxlength="24" placeholder="Topic (optional, default: Mine)">
 <input type="file" id="file" accept=".json,.txt"><div id="addMsg"></div>
 <div class="row"><button id="clearMine">Remove mine</button><button class="go" id="addSave">Add</button></div></section>
+<section id="sAuth" hidden><h2>Who's scrolling?</h2><p>Profiles live on this device only. Nothing is uploaded.</p>
+<div id="profiles"></div>
+<div id="pinRow" hidden><input type="password" id="pinIn" inputmode="numeric" maxlength="12" placeholder="PIN"><div class="row"><button class="go" id="pinGo">Unlock</button></div></div>
+<h3>New profile</h3><input type="text" id="nuName" maxlength="16" placeholder="Name"><input type="password" id="nuPin" inputmode="numeric" maxlength="12" placeholder="PIN (optional)">
+<div class="row"><button id="guest">Continue as guest</button><button class="go" id="create">Create</button></div><div id="authMsg"></div></section>
+<section id="sMe" hidden><h2 id="meName"></h2><p id="meStats"></p><h3>Theme</h3><div id="themes"></div>
+<div class="row" style="justify-content:flex-start"><button id="exp">Back up</button><button id="imp">Restore</button><button id="switch">Switch profile</button></div>
+<input type="file" id="impFile" accept=".json" hidden><div id="meMsg"></div></section>
 </div></div>
-<script>const BASE=[{"category": "Space", "fact": "A day on Venus is longer than its year. It spins once every ~243 Earth days but circles the Sun in ~225."}, {"category": "Space", "fact": "Sunlight takes about 8 minutes and 20 seconds to reach Earth. You're always seeing the Sun as it was a little while ago."}, {"category": "Space", "fact": "Saturn is so low in density that, in a big enough bathtub, it would float."}, {"category": "Space", "fact": "Olympus Mons on Mars is about 22 km tall, roughly two and a half times the height of Mount Everest."}, {"category": "Space", "fact": "A teaspoon of neutron-star material would weigh billions of tons."}, {"category": "Space", "fact": "Astronaut footprints on the Moon could last millions of years, because there's no wind or water to erase them."}, {"category": "Nature", "fact": "Botanically, bananas are berries. Strawberries are not."}, {"category": "Nature", "fact": "Cashews grow attached to the bottom of a fruit called the cashew apple."}, {"category": "Nature", "fact": "Sharks are older than trees. Sharks date back roughly 450 million years; the first trees came about 100 million years later."}, {"category": "Nature", "fact": "Lightning can heat the air around it to about 30,000 K, roughly five times hotter than the surface of the Sun."}, {"category": "Nature", "fact": "Antarctica is technically a desert, because it gets very little precipitation."}, {"category": "Nature", "fact": "Lake Baikal in Russia holds around 20% of the world's unfrozen surface fresh water."}, {"category": "Animals", "fact": "Octopuses have three hearts and blue blood."}, {"category": "Animals", "fact": "Wombats produce cube-shaped poop."}, {"category": "Animals", "fact": "Sea otters sometimes hold paws while sleeping so they don't drift apart."}, {"category": "Animals", "fact": "A group of flamingos is called a flamboyance."}, {"category": "Animals", "fact": "Crows can recognize individual human faces and remember them for years."}, {"category": "Animals", "fact": "Tardigrades have survived exposure to the vacuum of space in experiments."}, {"category": "Animals", "fact": "Butterflies taste with their feet."}, {"category": "Animals", "fact": "Sloths can slow their heart rate enough to hold their breath for up to 40 minutes."}, {"category": "Animals", "fact": "A shrimp's heart is located in its head."}, {"category": "Animals", "fact": "Axolotls can regrow limbs, and even parts of their heart and brain."}, {"category": "Body", "fact": "Your brain makes up about 2% of your body weight but uses around 20% of your energy."}, {"category": "Body", "fact": "Babies are born with roughly 300 bones. Adults have 206, because many fuse together."}, {"category": "Body", "fact": "Fingerprints start forming before birth, in the second trimester."}, {"category": "Body", "fact": "Your stomach replaces its inner lining every few days, so the acid doesn't digest you."}, {"category": "Body", "fact": "Your body has roughly 30 to 40 trillion human cells."}, {"category": "History", "fact": "Oxford University is older than the Aztec Empire. Teaching there began by 1096; Tenochtitlan was founded in 1325."}, {"category": "History", "fact": "Cleopatra lived closer in time to the Moon landing than to the building of the Great Pyramid."}, {"category": "History", "fact": "The shortest war in history, the Anglo-Zanzibar War of 1896, lasted roughly 40 minutes."}, {"category": "History", "fact": "Napoleon was about average height for a Frenchman of his time. The 'short' myth came from unit confusion and British cartoons."}, {"category": "History", "fact": "Archaeologists have found ancient honey in Egyptian tombs thousands of years old. Honey resists spoilage unusually well."}, {"category": "Science", "fact": "At the triple point, water can exist as ice, liquid, and vapor at the same time."}, {"category": "Science", "fact": "Sound travels about four times faster in water than in air."}, {"category": "Science", "fact": "Bananas are slightly radioactive, thanks to potassium-40. The dose is tiny and harmless."}, {"category": "Science", "fact": "There are more possible chess games than atoms in the observable universe."}, {"category": "Science", "fact": "Everest grows by a few millimeters a year as the Indian and Eurasian plates keep pushing together."}, {"category": "Tech", "fact": "The first message sent over ARPANET in 1969 was meant to be 'LOGIN'. The system crashed after 'LO'."}, {"category": "Tech", "fact": "In 1947, operators taped a moth found in Harvard's Mark II computer into their logbook, a famous early 'bug'."}, {"category": "Tech", "fact": "IBM's first 1 GB hard drive, in 1980, weighed over 500 pounds."}, {"category": "Food", "fact": "Early cultivated carrots were purple or yellow. Orange ones became common in Europe in the 1600s."}, {"category": "Food", "fact": "A pineapple plant takes around two years to produce a single fruit."}, {"category": "Food", "fact": "In the 1830s, ketchup was sold as a medicine."}, {"category": "Food", "fact": "Peanuts aren't nuts. They're legumes, closer to beans and lentils."}, {"category": "Language", "fact": "The dot over a lowercase i or j is called a tittle."}, {"category": "Language", "fact": "'Quarantine' comes from the Venetian for 'forty days', the time ships waited before docking during plague outbreaks."}, {"category": "Language", "fact": "'Rhythms' is one of the longest common English words with no a, e, i, o, or u."}, {"category": "Earth", "fact": "Russia spans 11 time zones."}, {"category": "Earth", "fact": "Canada has more lakes than any other country."}, {"category": "Earth", "fact": "Most of the ocean floor has still not been mapped in high resolution."}, {"category": "Psychology", "fact": "The Dunning–Kruger effect: people with low skill in an area tend to overestimate it, because the skills needed to do well are the same ones needed to spot mistakes."}, {"category": "Psychology", "fact": "'We only use 10% of our brain' is a myth. Brain imaging shows activity throughout the whole brain."}, {"category": "Psychology", "fact": "The peak-end rule: we judge an experience mostly by its most intense moment and how it ended, not by its average."}, {"category": "Psychology", "fact": "The mere-exposure effect: we tend to like things more simply because we've seen them before."}, {"category": "Psychology", "fact": "The 1964 Kitty Genovese story was exaggerated. Reports claimed 38 people watched and did nothing, but later reviews found that account inaccurate."}, {"category": "Psychology", "fact": "Hedonic adaptation: after big good or bad changes, most people drift back toward their usual level of happiness."}, {"category": "Psychology", "fact": "In a classic anchoring experiment, people's guesses about the UN's African members shifted depending on a random wheel spin they'd just seen."}, {"category": "Psychology", "fact": "During WWII, psychologist B. F. Skinner trained pigeons to guide missiles. The idea was never used in combat."}, {"category": "Economics", "fact": "Goodhart's law: once a measure becomes a target, it stops being a good measure."}, {"category": "Economics", "fact": "Zimbabwe printed a 100 trillion dollar banknote in 2009 during hyperinflation."}, {"category": "Economics", "fact": "The Dutch East India Company issued shares in 1602 and is often called the first publicly traded company."}, {"category": "Economics", "fact": "The Economist has published its lighthearted Big Mac Index since 1986 to compare currencies."}, {"category": "Economics", "fact": "On the island of Yap, people used giant stone discs called rai as money. Some were too heavy to move."}, {"category": "Economics", "fact": "The 'cobra effect' is named for a story in which a bounty on cobras led people to breed them for the reward."}, {"category": "Economics", "fact": "Historians now think 17th-century Dutch tulip mania was much smaller than the legend suggests."}, {"category": "Physics", "fact": "Around 100 trillion solar neutrinos pass through your body every second, almost never interacting with it."}, {"category": "Physics", "fact": "GPS satellites must correct for relativity. Without it, their clocks would drift by about 38 microseconds a day."}, {"category": "Physics", "fact": "Since 1983 the meter has been defined using the speed of light: 299,792,458 meters per second."}, {"category": "Physics", "fact": "Schrödinger's cat was a thought experiment meant to show how strange one quantum interpretation sounded, not an endorsement of it."}, {"category": "Physics", "fact": "Absolute zero is −273.15 °C, and nothing can be cooled all the way to it."}, {"category": "Physics", "fact": "Atoms are mostly empty space. You don't fall through your chair because of electromagnetic repulsion."}, {"category": "Physics", "fact": "The Eiffel Tower can grow about 15 cm taller in summer as its iron expands in the heat."}, {"category": "Math", "fact": "In a room of just 23 people, there's a better than 50% chance two share a birthday."}, {"category": "Math", "fact": "A shuffled deck of 52 cards has about 8 × 10^67 possible orders, so a well-shuffled deck is almost certainly in an order never seen before."}, {"category": "Math", "fact": "0.999… repeating forever is exactly equal to 1."}, {"category": "Math", "fact": "The word 'googol' (1 followed by 100 zeros) was coined by a nine-year-old, Milton Sirotta, in 1920."}, {"category": "Math", "fact": "The four color theorem, proved in 1976, was one of the first major proofs to rely on a computer."}, {"category": "Math", "fact": "Euler's identity, e^(iπ) + 1 = 0, links five of math's most important constants in one equation."}, {"category": "Math", "fact": "Graham's number is so huge that its digits wouldn't fit in the observable universe, even written as small as possible."}, {"category": "AI", "fact": "The term 'artificial intelligence' comes from a 1955 proposal for a workshop held at Dartmouth in 1956."}, {"category": "AI", "fact": "ELIZA, a 1960s chatbot by Joseph Weizenbaum, used simple pattern matching, yet some users felt it understood them."}, {"category": "AI", "fact": "In 1997, IBM's Deep Blue became the first computer to beat a reigning world chess champion, Garry Kasparov, in a match."}, {"category": "AI", "fact": "AlphaGo beat Go champion Lee Sedol 4–1 in 2016."}, {"category": "AI", "fact": "CAPTCHA stands for 'Completely Automated Public Turing test to tell Computers and Humans Apart'."}, {"category": "AI", "fact": "Alan Turing's 1950 paper called what we now call the Turing test 'the imitation game'."}, {"category": "Puns", "fact": "I used to hate facial hair, but then it grew on me."}, {"category": "Puns", "fact": "Time flies like an arrow; fruit flies like a banana."}, {"category": "Puns", "fact": "Why don't scientists trust atoms? They make up everything."}, {"category": "Puns", "fact": "I'm reading a book about anti-gravity. It's impossible to put down."}, {"category": "Puns", "fact": "A bicycle can't stand on its own because it's two-tired."}, {"category": "Puns", "fact": "I only know 25 letters of the alphabet. I don't know y."}, {"category": "Quotes", "fact": "'Not everything that counts can be counted' is often credited to Einstein, but it comes from sociologist William Bruce Cameron in 1963."}, {"category": "Quotes", "fact": "Sherlock Holmes never says 'Elementary, my dear Watson' in Conan Doyle's original stories."}, {"category": "Quotes", "fact": "Casablanca has no line 'Play it again, Sam'. The closest is 'Play it, Sam.'"}, {"category": "Quotes", "fact": "'Let them eat cake' is attributed to Marie Antoinette, but there's no evidence she said it. Rousseau wrote the phrase about an unnamed princess when she was still a child."}, {"category": "Quotes", "fact": "In The Empire Strikes Back, Vader says 'No, I am your father', not 'Luke, I am your father'."}, {"category": "Quotes", "fact": "Mark Twain's real line was closer to 'The report of my death was an exaggeration.'"}, {"category": "Quotes", "fact": "'I think, therefore I am' first appeared in French (Je pense, donc je suis) in 1637 before Descartes put it in Latin as 'Cogito, ergo sum'."}, {"category": "Music", "fact": "'Happy Birthday to You' was ruled free of copyright in the US in 2016 after a long legal fight."}, {"category": "Music", "fact": "John Cage's 4'33\" has no intentionally played notes. The 'music' is the sound of the room."}, {"category": "Music", "fact": "Beethoven composed his Ninth Symphony while almost completely deaf."}, {"category": "Music", "fact": "Tchaikovsky's 1812 Overture calls for cannon fire in the score."}, {"category": "Funny", "fact": "The Hundred Years' War lasted 116 years."}, {"category": "Funny", "fact": "During the Great Emu War of 1932, Australian soldiers with machine guns largely failed to cull the emus."}, {"category": "Funny", "fact": "There's a town called Boring in Oregon, and it's 'twinned' with Dull in Scotland."}, {"category": "Funny", "fact": "Nintendo was founded in 1889 as a playing-card company."}, {"category": "Funny", "fact": "The first item scanned at a store checkout with a barcode was a pack of Wrigley's gum, in 1974."}, {"category": "Funny", "fact": "The first webcam pointed at a coffee pot at the University of Cambridge so researchers could check whether it was full."}, {"category": "Funny", "fact": "Scotland's national animal is the unicorn."}, {"category": "Funny", "fact": "Goats have rectangular pupils."}, {"category": "Funny", "fact": "Pringles inventor Fredric Baur asked for some of his ashes to be buried in a Pringles can."}];
+<script>let BASE=[{"category": "Space", "fact": "A day on Venus is longer than its year. It spins once every ~243 Earth days but circles the Sun in ~225."}, {"category": "Space", "fact": "Sunlight takes about 8 minutes and 20 seconds to reach Earth. You're always seeing the Sun as it was a little while ago."}, {"category": "Space", "fact": "Saturn is so low in density that, in a big enough bathtub, it would float."}, {"category": "Space", "fact": "Olympus Mons on Mars is about 22 km tall, roughly two and a half times the height of Mount Everest."}, {"category": "Space", "fact": "A teaspoon of neutron-star material would weigh billions of tons."}, {"category": "Space", "fact": "Astronaut footprints on the Moon could last millions of years, because there's no wind or water to erase them."}, {"category": "Nature", "fact": "Botanically, bananas are berries. Strawberries are not."}, {"category": "Nature", "fact": "Cashews grow attached to the bottom of a fruit called the cashew apple."}, {"category": "Nature", "fact": "Sharks are older than trees. Sharks date back roughly 450 million years; the first trees came about 100 million years later."}, {"category": "Nature", "fact": "Lightning can heat the air around it to about 30,000 K, roughly five times hotter than the surface of the Sun."}, {"category": "Nature", "fact": "Antarctica is technically a desert, because it gets very little precipitation."}, {"category": "Nature", "fact": "Lake Baikal in Russia holds around 20% of the world's unfrozen surface fresh water."}, {"category": "Animals", "fact": "Octopuses have three hearts and blue blood."}, {"category": "Animals", "fact": "Wombats produce cube-shaped poop."}, {"category": "Animals", "fact": "Sea otters sometimes hold paws while sleeping so they don't drift apart."}, {"category": "Animals", "fact": "A group of flamingos is called a flamboyance."}, {"category": "Animals", "fact": "Crows can recognize individual human faces and remember them for years."}, {"category": "Animals", "fact": "Tardigrades have survived exposure to the vacuum of space in experiments."}, {"category": "Animals", "fact": "Butterflies taste with their feet."}, {"category": "Animals", "fact": "Sloths can slow their heart rate enough to hold their breath for up to 40 minutes."}, {"category": "Animals", "fact": "A shrimp's heart is located in its head."}, {"category": "Animals", "fact": "Axolotls can regrow limbs, and even parts of their heart and brain."}, {"category": "Body", "fact": "Your brain makes up about 2% of your body weight but uses around 20% of your energy."}, {"category": "Body", "fact": "Babies are born with roughly 300 bones. Adults have 206, because many fuse together."}, {"category": "Body", "fact": "Fingerprints start forming before birth, in the second trimester."}, {"category": "Body", "fact": "Your stomach replaces its inner lining every few days, so the acid doesn't digest you."}, {"category": "Body", "fact": "Your body has roughly 30 to 40 trillion human cells."}, {"category": "History", "fact": "Oxford University is older than the Aztec Empire. Teaching there began by 1096; Tenochtitlan was founded in 1325."}, {"category": "History", "fact": "Cleopatra lived closer in time to the Moon landing than to the building of the Great Pyramid."}, {"category": "History", "fact": "The shortest war in history, the Anglo-Zanzibar War of 1896, lasted roughly 40 minutes."}, {"category": "History", "fact": "Napoleon was about average height for a Frenchman of his time. The 'short' myth came from unit confusion and British cartoons."}, {"category": "History", "fact": "Archaeologists have found ancient honey in Egyptian tombs thousands of years old. Honey resists spoilage unusually well."}, {"category": "Science", "fact": "At the triple point, water can exist as ice, liquid, and vapor at the same time."}, {"category": "Science", "fact": "Sound travels about four times faster in water than in air."}, {"category": "Science", "fact": "Bananas are slightly radioactive, thanks to potassium-40. The dose is tiny and harmless."}, {"category": "Science", "fact": "There are more possible chess games than atoms in the observable universe."}, {"category": "Science", "fact": "Everest grows by a few millimeters a year as the Indian and Eurasian plates keep pushing together."}, {"category": "Tech", "fact": "The first message sent over ARPANET in 1969 was meant to be 'LOGIN'. The system crashed after 'LO'."}, {"category": "Tech", "fact": "In 1947, operators taped a moth found in Harvard's Mark II computer into their logbook, a famous early 'bug'."}, {"category": "Tech", "fact": "IBM's first 1 GB hard drive, in 1980, weighed over 500 pounds."}, {"category": "Food", "fact": "Early cultivated carrots were purple or yellow. Orange ones became common in Europe in the 1600s."}, {"category": "Food", "fact": "A pineapple plant takes around two years to produce a single fruit."}, {"category": "Food", "fact": "In the 1830s, ketchup was sold as a medicine."}, {"category": "Food", "fact": "Peanuts aren't nuts. They're legumes, closer to beans and lentils."}, {"category": "Language", "fact": "The dot over a lowercase i or j is called a tittle."}, {"category": "Language", "fact": "'Quarantine' comes from the Venetian for 'forty days', the time ships waited before docking during plague outbreaks."}, {"category": "Language", "fact": "'Rhythms' is one of the longest common English words with no a, e, i, o, or u."}, {"category": "Earth", "fact": "Russia spans 11 time zones."}, {"category": "Earth", "fact": "Canada has more lakes than any other country."}, {"category": "Earth", "fact": "Most of the ocean floor has still not been mapped in high resolution."}, {"category": "Psychology", "fact": "The Dunning–Kruger effect: people with low skill in an area tend to overestimate it, because the skills needed to do well are the same ones needed to spot mistakes."}, {"category": "Psychology", "fact": "'We only use 10% of our brain' is a myth. Brain imaging shows activity throughout the whole brain."}, {"category": "Psychology", "fact": "The peak-end rule: we judge an experience mostly by its most intense moment and how it ended, not by its average."}, {"category": "Psychology", "fact": "The mere-exposure effect: we tend to like things more simply because we've seen them before."}, {"category": "Psychology", "fact": "The 1964 Kitty Genovese story was exaggerated. Reports claimed 38 people watched and did nothing, but later reviews found that account inaccurate."}, {"category": "Psychology", "fact": "Hedonic adaptation: after big good or bad changes, most people drift back toward their usual level of happiness."}, {"category": "Psychology", "fact": "In a classic anchoring experiment, people's guesses about the UN's African members shifted depending on a random wheel spin they'd just seen."}, {"category": "Psychology", "fact": "During WWII, psychologist B. F. Skinner trained pigeons to guide missiles. The idea was never used in combat."}, {"category": "Economics", "fact": "Goodhart's law: once a measure becomes a target, it stops being a good measure."}, {"category": "Economics", "fact": "Zimbabwe printed a 100 trillion dollar banknote in 2009 during hyperinflation."}, {"category": "Economics", "fact": "The Dutch East India Company issued shares in 1602 and is often called the first publicly traded company."}, {"category": "Economics", "fact": "The Economist has published its lighthearted Big Mac Index since 1986 to compare currencies."}, {"category": "Economics", "fact": "On the island of Yap, people used giant stone discs called rai as money. Some were too heavy to move."}, {"category": "Economics", "fact": "The 'cobra effect' is named for a story in which a bounty on cobras led people to breed them for the reward."}, {"category": "Economics", "fact": "Historians now think 17th-century Dutch tulip mania was much smaller than the legend suggests."}, {"category": "Physics", "fact": "Around 100 trillion solar neutrinos pass through your body every second, almost never interacting with it."}, {"category": "Physics", "fact": "GPS satellites must correct for relativity. Without it, their clocks would drift by about 38 microseconds a day."}, {"category": "Physics", "fact": "Since 1983 the meter has been defined using the speed of light: 299,792,458 meters per second."}, {"category": "Physics", "fact": "Schrödinger's cat was a thought experiment meant to show how strange one quantum interpretation sounded, not an endorsement of it."}, {"category": "Physics", "fact": "Absolute zero is −273.15 °C, and nothing can be cooled all the way to it."}, {"category": "Physics", "fact": "Atoms are mostly empty space. You don't fall through your chair because of electromagnetic repulsion."}, {"category": "Physics", "fact": "The Eiffel Tower can grow about 15 cm taller in summer as its iron expands in the heat."}, {"category": "Math", "fact": "In a room of just 23 people, there's a better than 50% chance two share a birthday."}, {"category": "Math", "fact": "A shuffled deck of 52 cards has about 8 × 10^67 possible orders, so a well-shuffled deck is almost certainly in an order never seen before."}, {"category": "Math", "fact": "0.999… repeating forever is exactly equal to 1."}, {"category": "Math", "fact": "The word 'googol' (1 followed by 100 zeros) was coined by a nine-year-old, Milton Sirotta, in 1920."}, {"category": "Math", "fact": "The four color theorem, proved in 1976, was one of the first major proofs to rely on a computer."}, {"category": "Math", "fact": "Euler's identity, e^(iπ) + 1 = 0, links five of math's most important constants in one equation."}, {"category": "Math", "fact": "Graham's number is so huge that its digits wouldn't fit in the observable universe, even written as small as possible."}, {"category": "AI", "fact": "The term 'artificial intelligence' comes from a 1955 proposal for a workshop held at Dartmouth in 1956."}, {"category": "AI", "fact": "ELIZA, a 1960s chatbot by Joseph Weizenbaum, used simple pattern matching, yet some users felt it understood them."}, {"category": "AI", "fact": "In 1997, IBM's Deep Blue became the first computer to beat a reigning world chess champion, Garry Kasparov, in a match."}, {"category": "AI", "fact": "AlphaGo beat Go champion Lee Sedol 4–1 in 2016."}, {"category": "AI", "fact": "CAPTCHA stands for 'Completely Automated Public Turing test to tell Computers and Humans Apart'."}, {"category": "AI", "fact": "Alan Turing's 1950 paper called what we now call the Turing test 'the imitation game'."}, {"category": "Puns", "fact": "I used to hate facial hair, but then it grew on me."}, {"category": "Puns", "fact": "Time flies like an arrow; fruit flies like a banana."}, {"category": "Puns", "fact": "Why don't scientists trust atoms? They make up everything."}, {"category": "Puns", "fact": "I'm reading a book about anti-gravity. It's impossible to put down."}, {"category": "Puns", "fact": "A bicycle can't stand on its own because it's two-tired."}, {"category": "Puns", "fact": "I only know 25 letters of the alphabet. I don't know y."}, {"category": "Quotes", "fact": "'Not everything that counts can be counted' is often credited to Einstein, but it comes from sociologist William Bruce Cameron in 1963."}, {"category": "Quotes", "fact": "Sherlock Holmes never says 'Elementary, my dear Watson' in Conan Doyle's original stories."}, {"category": "Quotes", "fact": "Casablanca has no line 'Play it again, Sam'. The closest is 'Play it, Sam.'"}, {"category": "Quotes", "fact": "'Let them eat cake' is attributed to Marie Antoinette, but there's no evidence she said it. Rousseau wrote the phrase about an unnamed princess when she was still a child."}, {"category": "Quotes", "fact": "In The Empire Strikes Back, Vader says 'No, I am your father', not 'Luke, I am your father'."}, {"category": "Quotes", "fact": "Mark Twain's real line was closer to 'The report of my death was an exaggeration.'"}, {"category": "Quotes", "fact": "'I think, therefore I am' first appeared in French (Je pense, donc je suis) in 1637 before Descartes put it in Latin as 'Cogito, ergo sum'."}, {"category": "Music", "fact": "'Happy Birthday to You' was ruled free of copyright in the US in 2016 after a long legal fight."}, {"category": "Music", "fact": "John Cage's 4'33\" has no intentionally played notes. The 'music' is the sound of the room."}, {"category": "Music", "fact": "Beethoven composed his Ninth Symphony while almost completely deaf."}, {"category": "Music", "fact": "Tchaikovsky's 1812 Overture calls for cannon fire in the score."}, {"category": "Funny", "fact": "The Hundred Years' War lasted 116 years."}, {"category": "Funny", "fact": "During the Great Emu War of 1932, Australian soldiers with machine guns largely failed to cull the emus."}, {"category": "Funny", "fact": "There's a town called Boring in Oregon, and it's 'twinned' with Dull in Scotland."}, {"category": "Funny", "fact": "Nintendo was founded in 1889 as a playing-card company."}, {"category": "Funny", "fact": "The first item scanned at a store checkout with a barcode was a pack of Wrigley's gum, in 1974."}, {"category": "Funny", "fact": "The first webcam pointed at a coffee pot at the University of Cambridge so researchers could check whether it was full."}, {"category": "Funny", "fact": "Scotland's national animal is the unicorn."}, {"category": "Funny", "fact": "Goats have rectangular pupils."}, {"category": "Funny", "fact": "Pringles inventor Fredric Baur asked for some of his ashes to be buried in a Pringles can."}];
 const COLORS={Space:"#a99bff",Nature:"#8be09f",Animals:"#ff8a65",Body:"#ff9a8b",History:"#f4c95d",Science:"#6fd3ff",Tech:"#ff9fd5",Food:"#ffb347",Language:"#c8b6ff",Earth:"#74e3c9",Psychology:"#ffd166",Economics:"#9be564",Physics:"#7ae7ff",Math:"#ffa8a8",AI:"#b8f2e6",Puns:"#ffe66d",Quotes:"#ffc2e2",Music:"#ff9770",Funny:"#caffbf",Mine:"#f9f871"};
 const ICON={Space:"🪐",Nature:"🌿",Animals:"🐙",Body:"🧠",History:"🏛️",Science:"⚡",Tech:"💾",Food:"🍍",Language:"🔤",Earth:"🌍",Psychology:"🧩",Economics:"💸",Physics:"⚛️",Math:"🔢",AI:"🤖",Puns:"😜",Quotes:"💬",Music:"🎵",Funny:"🤡",Mine:"⭐",Random:"🎲"};
-const store={get(k,d){try{const v=JSON.parse(localStorage.getItem(k));return v==null?d:v}catch(e){return d}},set(k,v){try{localStorage.setItem(k,JSON.stringify(v))}catch(e){}}};
+let NS=null,who="";const store={get(k,d){if(!NS)return d;try{const v=JSON.parse(localStorage.getItem(NS+k));return v==null?d:v}catch(e){return d}},set(k,v){if(!NS)return;try{localStorage.setItem(NS+k,JSON.stringify(v))}catch(e){}}};
 const hash=s=>{let h=0;for(const c of s)h=(h*31+c.charCodeAt(0))|0;return"f"+(h>>>0).toString(36)};
 const rnd=()=>crypto.getRandomValues(new Uint32Array(1))[0]/4294967296;
 const clamp=(v,a,b)=>Math.min(b,Math.max(a,v));
 const $=id=>document.getElementById(id);
-const bg=c=>COLORS[c]||`hsl(${[...c].reduce((h,x)=>(h*37+x.charCodeAt(0))%360,0)} 85% 74%)`;
-let custom=store.get("custom",[]),picks=store.get("picks",[]),learn=store.get("learn",{}),FACTS=[];
-let liked=new Set(store.get("liked",[])),saved=new Set(store.get("saved",[])),seen=store.get("seen",0),tab="all",shown=new Set();
+const HUES={Space:255,Nature:140,Animals:14,Body:8,History:42,Science:195,Tech:325,Food:32,Language:265,Earth:168,Psychology:45,Economics:100,Physics:190,Math:0,AI:170,Puns:55,Quotes:335,Music:18,Funny:95,Mine:62,Random:280};
+const hue=c=>HUES[c]??[...c].reduce((h,x)=>(h*37+x.charCodeAt(0))%360,0);
+const THEMES={
+ aurora:{label:"Aurora",fg:"#f7f4ff",on:"#14110f",bg:h=>`radial-gradient(70% 50% at 12% 8%,hsl(${h} 90% 55% / .6),transparent 70%),radial-gradient(60% 45% at 95% 75%,hsl(${(h+70)%360} 90% 60% / .45),transparent 70%),hsl(${h} 45% 9%)`},
+ sorbet:{label:"Sorbet",fg:"#14110f",on:"#fff",bg:h=>`radial-gradient(70% 50% at 10% 5%,hsl(${(h+40)%360} 100% 78%),transparent 70%),radial-gradient(60% 50% at 95% 80%,hsl(${(h+330)%360} 100% 84%),transparent 70%),hsl(${h} 90% 92%)`},
+ dusk:{label:"Dusk",fg:"#fff4e6",on:"#2a1230",bg:h=>`radial-gradient(80% 55% at 85% 10%,hsl(${(h+150)%360} 85% 62% / .55),transparent 70%),radial-gradient(70% 50% at 5% 85%,hsl(${(h+30)%360} 80% 50% / .5),transparent 70%),linear-gradient(170deg,hsl(${h} 50% 24%),hsl(${(h+30)%360} 55% 11%))`}};
+const bg=c=>(THEMES[theme]||THEMES.aurora).bg(hue(c));
+let custom=[],picks=[],learn={},FACTS=[],liked=new Set(),saved=new Set(),seen=0,shared=0,theme="aurora",tab="all",shown=new Set();
+function loadUser(){custom=store.get("custom",[]);picks=store.get("picks",[]);learn=store.get("learn",{});liked=new Set(store.get("liked",[]));saved=new Set(store.get("saved",[]));seen=store.get("seen",0);shared=store.get("shared",0);theme=store.get("theme","aurora")}
 const feed=$("feed"),count=$("count"),hint=$("hint"),sheet=$("sheet");
 function build(){FACTS=[...BASE,...custom].map(f=>({category:f.category||"Mine",fact:f.fact}));FACTS.forEach(f=>f.id=hash(f.fact))}
 build();
@@ -112,9 +141,9 @@ function pick(){
 function card(f){
   const el=document.createElement("section");
   el.className="card";el.dataset.id=f.id;el.dataset.cat=f.category;el.style.background=bg(f.category);
-  el.innerHTML=`<div class="deco">${ICON[f.category]||"✨"}</div><div class="cat"></div><p class="fact"></p>
+  el.innerHTML=`<div class="deco"></div><div class="cat"></div><p class="fact"></p>
   <div class="rail"><div><button data-act="like" aria-label="Like">♥</button></div><div><button data-act="save" aria-label="Save">★</button></div><div><button data-act="share" aria-label="Share">↗</button></div></div>`;
-  el.querySelector(".cat").textContent=f.category;
+  el.querySelector(".cat").textContent=(ICON[f.category]||"✨")+" "+f.category;
   el.querySelector(".fact").textContent=f.fact;
   sync(el);io.observe(el);return el;
 }
@@ -131,7 +160,7 @@ function refresh(first){
   if(first){shown.add(first.id);feed.append(card(first))}
   more(6);feed.scrollTop=0;
 }
-const showCount=()=>count.textContent=seen+" learned";
+const showCount=()=>count.textContent=seen+" seen";
 const persist=()=>{store.set("liked",[...liked]);store.set("saved",[...saved])};
 
 const io=new IntersectionObserver(es=>es.forEach(e=>{
@@ -160,8 +189,8 @@ feed.addEventListener("click",async e=>{
     if(act==="like"){liked.has(id)?liked.delete(id):(liked.add(id),bump(c,.5));persist();sync(el)}
     if(act==="save"){saved.has(id)?saved.delete(id):(saved.add(id),bump(c,.8));persist();sync(el)}
     if(act==="share"){
-      const text=el.querySelector(".fact").textContent+"\n— FactScroll";
-      try{navigator.share?await navigator.share({text}):await navigator.clipboard.writeText(text)}catch(_){}
+      const text=el.querySelector(".fact").textContent+"\n— Factsagram";
+      try{navigator.share?await navigator.share({text}):await navigator.clipboard.writeText(text);shared++;store.set("shared",shared)}catch(_){}
     }
     return;
   }
@@ -182,8 +211,8 @@ function drawChips(){
     b.onclick=()=>{sel.has(c)?sel.delete(c):sel.add(c);b.classList.toggle("on")};box.append(b);
   });
 }
-function openSheet(n){sheet.hidden=false;$("sTopics").hidden=n!=="t";$("sAdd").hidden=n!=="a";$("addMsg").textContent="";if(n==="t")drawChips()}
-function closeSheet(){sheet.hidden=true;store.set("onboarded",1)}
+function openSheet(n){sheet.hidden=false;for(const[k,id]of[["t","sTopics"],["a","sAdd"],["u","sAuth"],["m","sMe"]])$(id).hidden=n!==k;$("addMsg").textContent="";if(n==="t")drawChips();if(n==="u")drawProfiles();if(n==="m")drawMe()}
+function closeSheet(){if(!NS)return;sheet.hidden=true;store.set("onboarded",1)}
 $("bTopics").onclick=()=>openSheet("t");$("bAdd").onclick=()=>openSheet("a");$("close").onclick=closeSheet;
 sheet.onclick=e=>{if(e.target===sheet)closeSheet()};
 $("topicsClear").onclick=()=>{sel.clear();document.querySelectorAll("#chips button").forEach(b=>b.classList.remove("on"))};
@@ -214,8 +243,84 @@ addEventListener("keydown",e=>{
   if(!sheet.hidden)return;
   if(e.key==="ArrowDown"||e.key==="ArrowUp"){e.preventDefault();feed.scrollBy({top:(e.key==="ArrowDown"?1:-1)*feed.clientHeight,behavior:"smooth"})}
 });
-showCount();more(6);
-if(!store.get("onboarded")&&!picks.length)openSheet("t");
+
+/* Profiles: stored on this device only (localStorage). A PIN keeps casual snoopers out; it is not strong security. */
+const app=$("app");
+const accs=()=>{try{return JSON.parse(localStorage.getItem("fa:accounts"))||{}}catch(e){return{}}};
+const putAccs=a=>{try{localStorage.setItem("fa:accounts",JSON.stringify(a))}catch(e){}};
+const hex=b=>[...new Uint8Array(b)].map(x=>x.toString(16).padStart(2,"0")).join("");
+async function hp(pin,salt){
+  if(crypto.subtle){const enc=new TextEncoder(),k=await crypto.subtle.importKey("raw",enc.encode(pin),"PBKDF2",false,["deriveBits"]);
+    return hex(await crypto.subtle.deriveBits({name:"PBKDF2",salt:enc.encode(salt),iterations:100000,hash:"SHA-256"},k,128))}
+  let h=5381;for(const c of salt+pin)h=((h*33)^c.charCodeAt(0))>>>0;return"w"+h;
+}
+function applyTheme(){
+  const t=THEMES[theme]||THEMES.aurora;app.style.setProperty("--ink",t.fg);app.style.setProperty("--on",t.on);
+  document.querySelectorAll(".card").forEach(el=>el.style.background=bg(el.dataset.cat));
+}
+function migrate(name){
+  if(Object.keys(accs()).length>1)return;const p="fa:u:"+name.toLowerCase()+":";
+  for(const k of["liked","saved","seen","custom","picks","learn","onboarded"]){try{const v=localStorage.getItem(k);if(v!=null){localStorage.setItem(p+k,v);localStorage.removeItem(k)}}catch(e){}}
+}
+function login(name){
+  NS="fa:u:"+name.toLowerCase()+":";who=name;
+  try{localStorage.setItem("fa:last",name);sessionStorage.setItem("fa:sess",name)}catch(e){}
+  loadUser();build();applyTheme();$("bMe").textContent=name[0].toUpperCase();showCount();
+  const first=!store.get("onboarded")&&!picks.length;
+  closeSheet();refresh();if(first)openSheet("t");
+}
+let pend=null;
+function drawProfiles(){
+  const box=$("profiles");box.innerHTML="";$("pinRow").hidden=true;$("authMsg").textContent="";pend=null;
+  Object.values(accs()).forEach(a=>{const b=document.createElement("button");b.textContent=(a.h?"🔒 ":"")+a.name;
+    b.onclick=()=>{if(!a.h)return login(a.name);pend=a;$("pinRow").hidden=false;$("pinIn").value="";$("pinIn").focus()};box.append(b)});
+}
+$("pinGo").onclick=async()=>{if(pend&&await hp($("pinIn").value,pend.salt)===pend.h)login(pend.name);else $("authMsg").textContent="Wrong PIN."};
+$("create").onclick=async()=>{
+  const name=$("nuName").value.trim(),pin=$("nuPin").value,a=accs(),msg=$("authMsg");
+  if(!/^[\p{L}\p{N}_ ]{2,16}$/u.test(name))return msg.textContent="Use 2–16 letters or numbers.";
+  if(a[name.toLowerCase()])return msg.textContent="That name is already used on this device.";
+  const salt=hex(crypto.getRandomValues(new Uint8Array(8)));
+  a[name.toLowerCase()]={name,salt,h:pin?await hp(pin,salt):""};putAccs(a);migrate(name);login(name);
+};
+$("guest").onclick=()=>{const a=accs();if(!a.guest){a.guest={name:"Guest",salt:"",h:""};putAccs(a);migrate("Guest")}login("Guest")};
+$("switch").onclick=()=>{try{sessionStorage.removeItem("fa:sess")}catch(e){}NS=null;openSheet("u")};
+$("bMe").onclick=()=>openSheet("m");
+function drawMe(){
+  $("meName").textContent=who;$("meMsg").textContent="";
+  $("meStats").textContent=`${seen} seen · ${liked.size} liked · ${saved.size} saved · ${shared} shared`;
+  const box=$("themes");box.innerHTML="";
+  Object.keys(THEMES).forEach(k=>{const b=document.createElement("button");b.textContent=THEMES[k].label;b.className=k===theme?"on":"";
+    b.onclick=()=>{theme=k;store.set("theme",k);applyTheme();drawMe()};box.append(b)});
+}
+$("bTheme").onclick=()=>{const ks=Object.keys(THEMES);theme=ks[(ks.indexOf(theme)+1)%ks.length];store.set("theme",theme);applyTheme()};
+$("exp").onclick=()=>{
+  const d={v:1,name:who,data:{liked:[...liked],saved:[...saved],seen,shared,custom,picks,learn,theme}};
+  const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(d)],{type:"application/json"}));
+  a.download=`factsagram-${who}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
+};
+$("imp").onclick=()=>$("impFile").click();
+$("impFile").onchange=async e=>{
+  try{
+    const d=JSON.parse(await e.target.files[0].text()).data;
+    liked=new Set([...liked,...(d.liked||[])]);saved=new Set([...saved,...(d.saved||[])]);
+    seen=Math.max(seen,d.seen||0);shared=Math.max(shared,d.shared||0);
+    const have=new Set(custom.map(c=>c.fact));custom=[...custom,...(d.custom||[]).filter(c=>c&&c.fact&&!have.has(c.fact))];
+    if(d.picks&&!picks.length)picks=d.picks;if(THEMES[d.theme])theme=d.theme;
+    persist();store.set("seen",seen);store.set("shared",shared);store.set("custom",custom);store.set("picks",picks);store.set("theme",theme);
+    build();applyTheme();refresh();drawMe();showCount();$("meMsg").textContent="Backup restored.";
+  }catch(err){$("meMsg").textContent="That file isn't a Factsagram backup."}
+  e.target.value="";
+};
+
+/* facts.json next to this page is the live fact list; the embedded copy is the offline fallback */
+fetch("facts.json",{cache:"no-cache"}).then(r=>r.ok?r.json():Promise.reject()).then(j=>{
+  if(Array.isArray(j)&&j.some(x=>x&&x.fact)){BASE=j.filter(x=>x&&x.fact);build();if(NS&&sheet.hidden&&feed.scrollTop<10)refresh()}
+}).catch(()=>{});
+
+applyTheme();
+const last=localStorage.getItem("fa:last"),acc=last&&accs()[last.toLowerCase()];
+if(acc&&(!acc.h||sessionStorage.getItem("fa:sess")===acc.name))login(acc.name);else openSheet("u");
 </script>
 </body>
 </html>
