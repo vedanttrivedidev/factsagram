@@ -1,0 +1,51 @@
+name: Approve fact suggestion
+
+on:
+  issues:
+    types: [labeled]
+
+permissions:
+  contents: write
+  issues: write
+  pages: write
+
+concurrency:
+  group: facts-json
+
+jobs:
+  approve:
+    # Only runs when the repo owner adds the "approve" label.
+    if: github.event.label.name == 'approve' && github.actor == github.repository_owner
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Add the fact to facts.json
+        id: add
+        run: python3 .github/scripts/add_fact.py
+
+      - name: Commit and push
+        if: steps.add.outputs.status == 'added'
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add facts.json
+          git commit -m "Add community fact from issue #${{ github.event.issue.number }}"
+          git push
+
+      - name: Ask GitHub Pages to rebuild
+        if: steps.add.outputs.status == 'added'
+        continue-on-error: true
+        run: gh api -X POST "repos/${{ github.repository }}/pages/builds"
+
+      - name: Reply on the issue and close it
+        if: steps.add.outputs.status != ''
+        env:
+          NUM: ${{ github.event.issue.number }}
+          STATUS: ${{ steps.add.outputs.status }}
+        run: |
+          gh issue comment "$NUM" --body-file "$RUNNER_TEMP/reply.md"
+          if [ "$STATUS" = "added" ]; then gh issue close "$NUM" --reason completed; fi
