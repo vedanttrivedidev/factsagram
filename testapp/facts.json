@@ -1,0 +1,646 @@
+[
+{
+"category": "Random",
+"fact": "Did you know that The Right and the Wrong was the first feature film produced natively in Trinidad and Tobago?",
+"source": "Wikipedia"
+},
+{
+"category": "Economics",
+"fact": "The Dutch East India Company issued shares in 1602 and is often called the first publicly traded company."
+},
+{
+"category": "Random",
+"fact": "Did you know that Janet Panetta started dancing as physical therapy for childhood polio?",
+"source": "Wikipedia"
+},
+{
+"category": "Economics",
+"fact": "Goodhart's law: once a measure becomes a target, it stops being a good measure."
+},
+{
+"category": "Nature",
+"fact": "Cashews grow attached to the bottom of a fruit called the cashew apple."
+},
+{
+"category": "Physics",
+"fact": "Schrödinger's cat was a thought experiment meant to show how strange one quantum interpretation sounded, not an endorsement of it."
+},
+{
+"category": "Economics",
+"fact": "The 'cobra effect' is named for a story in which a bounty on cobras led people to breed them for the reward."
+},
+{
+"category": "Music",
+"fact": "John Cage's 4'33\" has no intentionally played notes. The 'music' is the sound of the room."
+},
+{
+"category": "Math",
+"fact": "The four color theorem, proved in 1976, was one of the first major proofs to rely on a computer."
+},
+{
+"category": "Puns",
+"fact": "I'm reading a book about anti-gravity. It's impossible to put down."
+},
+{
+"category": "Random",
+"fact": "Did you know that the 2024 Summer Paralympics opening ceremony featured dancing Phryges?",
+"source": "Wikipedia"
+},
+{
+"category": "Random",
+"fact": "Did you know that one 1886 night 150 people broke into a courthouse and began moving it 15 miles (24 km), before getting stuck in a blizzard?",
+"source": "Wikipedia"
+},
+{
+"category": "Physics",
+"fact": "Atoms are mostly empty space. You don't fall through your chair because of electromagnetic repulsion."
+},
+{
+"category": "AI",
+"fact": "AlphaGo beat Go champion Lee Sedol 4–1 in 2016."
+},
+{
+"category": "Random",
+"fact": "Did you know that the only two Venezuelans ever to play for the NFL, Pat Ragusa and Alan Pringle, played a combined total of four regular-season games?",
+"source": "Wikipedia"
+},
+{
+"category": "Math",
+"fact": "Euler's identity, e^(iπ) + 1 = 0, links five of math's most important constants in one equation."
+},
+{
+"category": "Economics",
+"fact": "On the island of Yap, people used giant stone discs called rai as money. Some were too heavy to move."
+},
+{
+"category": "Space",
+"fact": "A day on Venus is longer than its year. It spins once every ~243 Earth days but circles the Sun in ~225."
+},
+{
+"category": "Random",
+"fact": "Did you know that Veto, inspired by the history of the Polish–Lithuanian Commonwealth, is considered to be the first Polish collectible card game?",
+"source": "Wikipedia"
+},
+{
+"category": "Funny",
+"fact": "Nintendo was founded in 1889 as a playing-card company."
+},
+{
+"category": "Economics",
+"fact": "Historians now think 17th-century Dutch tulip mania was much smaller than the legend suggests."
+},
+{
+"category": "Animals",
+"fact": "Sloths can slow their heart rate enough to hold their breath for up to 40 minutes."
+},
+{
+"category": "Puns",
+"fact": "Why don't scientists trust atoms? They make up everything."
+},
+{
+"category": "Space",
+"fact": "Saturn is so low in density that, in a big enough bathtub, it would float."
+},
+{
+"category": "Space",
+"fact": "Olympus Mons on Mars is about 22 km tall, roughly two and a half times the height of Mount Everest."
+},
+{
+"category": "Science",
+"fact": "There are more possible chess games than atoms in the observable universe."
+},
+{
+"category": "Earth",
+"fact": "Canada has more lakes than any other country."
+},
+{
+"category": "Quotes",
+"fact": "Sherlock Holmes never says 'Elementary, my dear Watson' in Conan Doyle's original stories."
+},
+{
+"category": "Science",
+"fact": "Everest grows by a few millimeters a year as the Indian and Eurasian plates keep pushing together."
+},
+{
+"category": "Funny",
+"fact": "Goats have rectangular pupils."
+},
+{
+"category": "Random",
+"fact": "Did you know that some of the work of lesbian feminist filmmaking pioneer Norma Bahia Pontes is lost media?",
+"source": "Wikipedia"
+},
+{
+"category": "Science",
+"fact": "Sound travels about four times faster in water than in air."
+},
+{
+"category": "Quotes",
+"fact": "Mark Twain's real line was closer to 'The report of my death was an exaggeration.'"
+},
+{
+"category": "Animals",
+"fact": "Butterflies taste with their feet."
+},
+{
+"category": "Psychology",
+"fact": "The peak-end rule: we judge an experience mostly by its most intense moment and how it ended, not by its average."
+},
+{
+"category": "Random",
+"fact": "Did you know that Elham Mahamid Ruzin, a blind Muslim Arab, won a silver medal for Israel at the 2024 Paris Paralympics?",
+"source": "Wikipedia"
+},
+{
+"category": "Nature",
+"fact": "Lightning can heat the air around it to about 30,000 K, roughly five times hotter than the surface of the Sun."
+},
+{
+"category": "Body",
+"fact": "Your body has roughly 30 to 40 trillion human cells."
+},
+{
+"category": "Puns",
+"fact": "I only know 25 letters of the alphabet. I don't know y."
+},
+{
+"category": "Random",
+"fact": "Did you know that a clergyman from London established 87 schools in Wales in the 17th century?",
+"source": "Wikipedia"
+},
+{
+"category": "Nature",
+"fact": "Antarctica is technically a desert, because it gets very little precipitation."
+},
+{
+"category": "Funny",
+"fact": "The first webcam pointed at a coffee pot at the University of Cambridge so researchers could check whether it was full."
+},
+{
+"category": "Animals",
+"fact": "A group of flamingos is called a flamboyance."
+},
+{
+"category": "Random",
+"fact": "Did you know that both scholars and activists believe that diet culture is often intertwined with racism and other forms of prejudice?",
+"source": "Wikipedia"
+},
+{
+"category": "Funny",
+"fact": "The first item scanned at a store checkout with a barcode was a pack of Wrigley's gum, in 1974."
+},
+{
+"category": "Random",
+"fact": "Did you know that Chris Collier is the first NFL player from his college in 37 years?",
+"source": "Wikipedia"
+},
+{
+"category": "Animals",
+"fact": "Wombats produce cube-shaped poop."
+},
+{
+"category": "Psychology",
+"fact": "In a classic anchoring experiment, people's guesses about the UN's African members shifted depending on a random wheel spin they'd just seen."
+},
+{
+"category": "Random",
+"fact": "Did you know that a Cretan man found a 1st-century statue of Aphrodite while trying to drill a well, and then reburied it?",
+"source": "Wikipedia"
+},
+{
+"category": "Tech",
+"fact": "IBM's first 1 GB hard drive, in 1980, weighed over 500 pounds."
+},
+{
+"category": "Earth",
+"fact": "Most of the ocean floor has still not been mapped in high resolution."
+},
+{
+"category": "Animals",
+"fact": "Axolotls can regrow limbs, and even parts of their heart and brain."
+},
+{
+"category": "Economics",
+"fact": "The Economist has published its lighthearted Big Mac Index since 1986 to compare currencies."
+},
+{
+"category": "Language",
+"fact": "'Rhythms' is one of the longest common English words with no a, e, i, o, or u."
+},
+{
+"category": "Science",
+"fact": "At the triple point, water can exist as ice, liquid, and vapor at the same time."
+},
+{
+"category": "Funny",
+"fact": "Pringles inventor Fredric Baur asked for some of his ashes to be buried in a Pringles can."
+},
+{
+"category": "Physics",
+"fact": "Around 100 trillion solar neutrinos pass through your body every second, almost never interacting with it."
+},
+{
+"category": "History",
+"fact": "Did you know that an ancient Canadian archaeological site was discovered during the construction of a dump?",
+"source": "Wikipedia"
+},
+{
+"category": "Music",
+"fact": "'Happy Birthday to You' was ruled free of copyright in the US in 2016 after a long legal fight."
+},
+{
+"category": "Quotes",
+"fact": "In The Empire Strikes Back, Vader says 'No, I am your father', not 'Luke, I am your father'."
+},
+{
+"category": "History",
+"fact": "Did you know that the Haitian Revolution began when Cécile Fatiman sacrificed a black pig, a ritual that was later repeated by Haitians resisting the United States occupation and the Duvalier dynasty?",
+"source": "Wikipedia"
+},
+{
+"category": "Random",
+"fact": "Did you know that the first silver dollars of the Republic of China were crudely designed mementos (example pictured)?",
+"source": "Wikipedia"
+},
+{
+"category": "Random",
+"fact": "Did you know that Ratnākara's Haravijaya is the longest extant Sanskrit mahākāvya?",
+"source": "Wikipedia"
+},
+{
+"category": "Animals",
+"fact": "Crows can recognize individual human faces and remember them for years."
+},
+{
+"category": "Body",
+"fact": "Your brain makes up about 2% of your body weight but uses around 20% of your energy."
+},
+{
+"category": "Quotes",
+"fact": "'I think, therefore I am' first appeared in French (Je pense, donc je suis) in 1637 before Descartes put it in Latin as 'Cogito, ergo sum'."
+},
+{
+"category": "Animals",
+"fact": "Sea otters sometimes hold paws while sleeping so they don't drift apart."
+},
+{
+"category": "History",
+"fact": "Did you know that the Italian Campaign of 1796–1797 (battle pictured) demonstrated that Napoleon was a \"great strategist\"?",
+"source": "Wikipedia"
+},
+{
+"category": "Psychology",
+"fact": "The mere-exposure effect: we tend to like things more simply because we've seen them before."
+},
+{
+"category": "Random",
+"fact": "Did you know that a German pastor let a deposed East German head of state stay in his house?",
+"source": "Wikipedia"
+},
+{
+"category": "Funny",
+"fact": "Scotland's national animal is the unicorn."
+},
+{
+"category": "Body",
+"fact": "Your stomach replaces its inner lining every few days, so the acid doesn't digest you."
+},
+{
+"category": "Food",
+"fact": "A pineapple plant takes around two years to produce a single fruit."
+},
+{
+"category": "Body",
+"fact": "Babies are born with roughly 300 bones. Adults have 206, because many fuse together."
+},
+{
+"category": "Science",
+"fact": "Did you know that scientists publishing in Liebigs Annalen were subject to criticism and attacks by editor Justus von Liebig?",
+"source": "Wikipedia"
+},
+{
+"category": "Psychology",
+"fact": "The 1964 Kitty Genovese story was exaggerated. Reports claimed 38 people watched and did nothing, but later reviews found that account inaccurate."
+},
+{
+"category": "Food",
+"fact": "Peanuts aren't nuts. They're legumes, closer to beans and lentils."
+},
+{
+"category": "Animals",
+"fact": "Tardigrades have survived exposure to the vacuum of space in experiments."
+},
+{
+"category": "Science",
+"fact": "Bananas are slightly radioactive, thanks to potassium-40. The dose is tiny and harmless."
+},
+{
+"category": "Tech",
+"fact": "In 1947, operators taped a moth found in Harvard's Mark II computer into their logbook, a famous early 'bug'."
+},
+{
+"category": "Puns",
+"fact": "Time flies like an arrow; fruit flies like a banana."
+},
+{
+"category": "Funny",
+"fact": "There's a town called Boring in Oregon, and it's 'twinned' with Dull in Scotland."
+},
+{
+"category": "Nature",
+"fact": "Botanically, bananas are berries. Strawberries are not."
+},
+{
+"category": "Food",
+"fact": "Early cultivated carrots were purple or yellow. Orange ones became common in Europe in the 1600s."
+},
+{
+"category": "Physics",
+"fact": "GPS satellites must correct for relativity. Without it, their clocks would drift by about 38 microseconds a day."
+},
+{
+"category": "Random",
+"fact": "Did you know that Northamptonshire has had ninety-two railway stations, but now has only six?",
+"source": "Wikipedia"
+},
+{
+"category": "AI",
+"fact": "ELIZA, a 1960s chatbot by Joseph Weizenbaum, used simple pattern matching, yet some users felt it understood them."
+},
+{
+"category": "History",
+"fact": "Archaeologists have found ancient honey in Egyptian tombs thousands of years old. Honey resists spoilage unusually well."
+},
+{
+"category": "Psychology",
+"fact": "Hedonic adaptation: after big good or bad changes, most people drift back toward their usual level of happiness."
+},
+{
+"category": "Animals",
+"fact": "Octopuses have three hearts and blue blood."
+},
+{
+"category": "Math",
+"fact": "Graham's number is so huge that its digits wouldn't fit in the observable universe, even written as small as possible."
+},
+{
+"category": "Random",
+"fact": "Did you know that in fiction, neutron stars harbour exotic lifeforms in their vicinity, on their surface, and even in their interior?",
+"source": "Wikipedia"
+},
+{
+"category": "Language",
+"fact": "'Quarantine' comes from the Venetian for 'forty days', the time ships waited before docking during plague outbreaks."
+},
+{
+"category": "AI",
+"fact": "CAPTCHA stands for 'Completely Automated Public Turing test to tell Computers and Humans Apart'."
+},
+{
+"category": "History",
+"fact": "Napoleon was about average height for a Frenchman of his time. The 'short' myth came from unit confusion and British cartoons."
+},
+{
+"category": "Random",
+"fact": "Did you know that Lisa Blatt, the first woman to argue 50 cases before the Supreme Court of the United States, \"elicits laughs and the occasional sharp response from the justices\" for her witty delivery?",
+"source": "Wikipedia"
+},
+{
+"category": "Random",
+"fact": "Did you know that Maximiliano Hernández Martínez believed that hanging colored lights across San Salvador would cure a smallpox epidemic?",
+"source": "Wikipedia"
+},
+{
+"category": "Space",
+"fact": "A teaspoon of neutron-star material would weigh billions of tons."
+},
+{
+"category": "AI",
+"fact": "In 1997, IBM's Deep Blue became the first computer to beat a reigning world chess champion, Garry Kasparov, in a match."
+},
+{
+"category": "Quotes",
+"fact": "'Not everything that counts can be counted' is often credited to Einstein, but it comes from sociologist William Bruce Cameron in 1963."
+},
+{
+"category": "Quotes",
+"fact": "'Let them eat cake' is attributed to Marie Antoinette, but there's no evidence she said it. Rousseau wrote the phrase about an unnamed princess when she was still a child."
+},
+{
+"category": "Language",
+"fact": "The dot over a lowercase i or j is called a tittle."
+},
+{
+"category": "Random",
+"fact": "Did you know that imprisoned Afghan politician Abdur Rahman Mahmudi wrote poems using onion juice as ink in his prison cell?",
+"source": "Wikipedia"
+},
+{
+"category": "Economics",
+"fact": "Zimbabwe printed a 100 trillion dollar banknote in 2009 during hyperinflation."
+},
+{
+"category": "Music",
+"fact": "Beethoven composed his Ninth Symphony while almost completely deaf."
+},
+{
+"category": "Random",
+"fact": "Did you know that both Christian Albright and De'Montre Tuggle were born on the same day, named second-team all-Mid-American Conference in 2020, signed with the Chicago Bears in 2022, and debuted in the CFL in 2023?",
+"source": "Wikipedia"
+},
+{
+"category": "History",
+"fact": "Cleopatra lived closer in time to the Moon landing than to the building of the Great Pyramid."
+},
+{
+"category": "Psychology",
+"fact": "The Dunning–Kruger effect: people with low skill in an area tend to overestimate it, because the skills needed to do well are the same ones needed to spot mistakes."
+},
+{
+"category": "Math",
+"fact": "In a room of just 23 people, there's a better than 50% chance two share a birthday."
+},
+{
+"category": "Psychology",
+"fact": "During WWII, psychologist B. F. Skinner trained pigeons to guide missiles. The idea was never used in combat."
+},
+{
+"category": "Random",
+"fact": "Did you know that the noken system used for voting in parts of Indonesia can produce turnouts of 100%?",
+"source": "Wikipedia"
+},
+{
+"category": "Random",
+"fact": "Did you know that a banker was named the prime minister of Equatorial Guinea after his predecessor resigned during an economic crisis?",
+"source": "Wikipedia"
+},
+{
+"category": "History",
+"fact": "The shortest war in history, the Anglo-Zanzibar War of 1896, lasted roughly 40 minutes."
+},
+{
+"category": "Tech",
+"fact": "The first message sent over ARPANET in 1969 was meant to be 'LOGIN'. The system crashed after 'LO'."
+},
+{
+"category": "Random",
+"fact": "Did you know that chronic pain syndromes affect approximately 20 percent of people and account for 15 to 20 percent of doctor visits?",
+"source": "Wikipedia"
+},
+{
+"category": "Space",
+"fact": "Astronaut footprints on the Moon could last millions of years, because there's no wind or water to erase them."
+},
+{
+"category": "Random",
+"fact": "Did you know that the Ferrari FF was, upon its release, the world's fastest four-seater car?",
+"source": "Wikipedia"
+},
+{
+"category": "Space",
+"fact": "Sunlight takes about 8 minutes and 20 seconds to reach Earth. You're always seeing the Sun as it was a little while ago."
+},
+{
+"category": "Earth",
+"fact": "Russia spans 11 time zones."
+},
+{
+"category": "Math",
+"fact": "0.999… repeating forever is exactly equal to 1."
+},
+{
+"category": "Food",
+"fact": "In the 1830s, ketchup was sold as a medicine."
+},
+{
+"category": "Math",
+"fact": "The word 'googol' (1 followed by 100 zeros) was coined by a nine-year-old, Milton Sirotta, in 1920."
+},
+{
+"category": "Random",
+"fact": "Did you know that Abdul Ahad Azad is recognised for laying the foundations of literary criticism in Kashmiri literature?",
+"source": "Wikipedia"
+},
+{
+"category": "Psychology",
+"fact": "'We only use 10% of our brain' is a myth. Brain imaging shows activity throughout the whole brain."
+},
+{
+"category": "Music",
+"fact": "Did you know that many hapa haole songs were written by non-Hawaiians and featured nonsensical, faux-Hawaiian lyrics?",
+"source": "Wikipedia"
+},
+{
+"category": "Puns",
+"fact": "A bicycle can't stand on its own because it's two-tired."
+},
+{
+"category": "Random",
+"fact": "Did you know that the scenes set in the United States in the Taiwanese film Daughter's Daughter were nearly omitted during the writing process but were retained at the insistence of lead actress Sylvia Chang?",
+"source": "Wikipedia"
+},
+{
+"category": "Funny",
+"fact": "The Hundred Years' War lasted 116 years."
+},
+{
+"category": "Animals",
+"fact": "A shrimp's heart is located in its head."
+},
+{
+"category": "AI",
+"fact": "Alan Turing's 1950 paper called what we now call the Turing test 'the imitation game'."
+},
+{
+"category": "Random",
+"fact": "Did you know that Matthew Webb died attempting to swim down the Niagara Rapids?",
+"source": "Wikipedia"
+},
+{
+"category": "Funny",
+"fact": "During the Great Emu War of 1932, Australian soldiers with machine guns largely failed to cull the emus."
+},
+{
+"category": "Math",
+"fact": "A shuffled deck of 52 cards has about 8 × 10^67 possible orders, so a well-shuffled deck is almost certainly in an order never seen before."
+},
+{
+"category": "Physics",
+"fact": "Absolute zero is −273.15 °C, and nothing can be cooled all the way to it."
+},
+{
+"category": "Physics",
+"fact": "Since 1983 the meter has been defined using the speed of light: 299,792,458 meters per second."
+},
+{
+"category": "Body",
+"fact": "Fingerprints start forming before birth, in the second trimester."
+},
+{
+"category": "Nature",
+"fact": "Lake Baikal in Russia holds around 20% of the world's unfrozen surface fresh water."
+},
+{
+"category": "Random",
+"fact": "Did you know that Wigwam formed four days before their first concert?",
+"source": "Wikipedia"
+},
+{
+"category": "AI",
+"fact": "The term 'artificial intelligence' comes from a 1955 proposal for a workshop held at Dartmouth in 1956."
+},
+{
+"category": "History",
+"fact": "Oxford University is older than the Aztec Empire. Teaching there began by 1096; Tenochtitlan was founded in 1325."
+},
+{
+"category": "Random",
+"fact": "Did you know that in 2018 thieves stole 40 percent of the cocoa produced by the São Toméan Organic Cocoa Production and Export Cooperative?",
+"source": "Wikipedia"
+},
+{
+"category": "Random",
+"fact": "Did you know that Karađorđeva šnicla was accidentally created as an improvisation of chicken Kiev?",
+"source": "Wikipedia"
+},
+{
+"category": "Nature",
+"fact": "Sharks are older than trees. Sharks date back roughly 450 million years; the first trees came about 100 million years later."
+},
+{
+"category": "Random",
+"fact": "Did you know that East Suffolk Park, a former student hostel in Edinburgh, was once an internment camp for enemy aliens?",
+"source": "Wikipedia"
+},
+{
+"category": "Random",
+"fact": "Did you know that the parents of Mathias Nkwenti, the second Cameroonian ever to play in the NFL, initially opposed his football career?",
+"source": "Wikipedia"
+},
+{
+"category": "Music",
+"fact": "Tchaikovsky's 1812 Overture calls for cannon fire in the score."
+},
+{
+"category": "Puns",
+"fact": "I used to hate facial hair, but then it grew on me."
+},
+{
+"category": "Random",
+"fact": "Did you know that Druze rower Saleh Shahin won a bronze medal for Israel at the 2024 Paris Paralympics 19 years after he was injured in a terrorist attack?",
+"source": "Wikipedia"
+},
+{
+"category": "Physics",
+"fact": "The Eiffel Tower can grow about 15 cm taller in summer as its iron expands in the heat."
+},
+{
+"category": "Quotes",
+"fact": "Casablanca has no line 'Play it again, Sam'. The closest is 'Play it, Sam.'"
+},
+{
+"category": "Random",
+"fact": "Did you know that the 1998 cyberpunk short story \"CyberJoly Drim\" caused a controversy in the Polish science fiction and fantasy community?",
+"source": "Wikipedia"
+}
+]
