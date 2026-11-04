@@ -69,31 +69,42 @@ html,body{height:100%;background:var(--ink);overflow:hidden;font-family:"Helveti
 .panel{--ink:#14110f;--on:#fff;color:var(--ink)}
 .panel h3{font-size:15px;margin:14px 0 8px}
 .panel input[type=password]{width:100%;border:2px solid var(--ink);border-radius:12px;padding:10px;font:500 15px inherit;background:#fff;margin-bottom:10px}
+
+.tools{flex-wrap:wrap}
+.panel .row{flex-wrap:wrap}
+#fchips{display:flex;gap:8px;overflow-x:auto;padding-bottom:8px;margin-bottom:8px;scrollbar-width:none}
+#fchips button{flex:none;border:2px solid var(--ink);background:transparent;color:var(--ink);border-radius:99px;padding:6px 13px;font:700 13px inherit;cursor:pointer}
+#fchips button.on{background:var(--ink);color:var(--on)}
+.res{display:block;width:100%;text-align:left;border:0;border-bottom:1px solid #14110f26;background:none;padding:10px 2px;font:500 15px/1.3 inherit;color:var(--ink);cursor:pointer}
+.res small{display:block;font-weight:700;opacity:.65;margin-bottom:2px}
+#toast{position:absolute;left:50%;bottom:calc(30px + env(safe-area-inset-bottom));transform:translate(-50%,20px);background:var(--ink);color:var(--on);padding:10px 16px;border-radius:99px;font:700 14px inherit;opacity:0;pointer-events:none;transition:.25s;z-index:30;white-space:nowrap}
+#toast.show{opacity:1;transform:translate(-50%,0)}
 </style>
 </head>
 <body>
 <div id="app">
   <div class="top">
     <div class="row1"><div class="tabs" role="tablist"><button role="tab" aria-selected="true" data-tab="all">For you</button><button role="tab" aria-selected="false" data-tab="saved">Saved</button></div><button id="bMe" class="av" aria-label="Profile"></button></div>
-    <div class="tools"><button id="bTopics">Topics</button><button id="bAdd">+ Fact</button><button id="bTheme" aria-label="Change theme">◐</button><span id="count"></span></div>
+    <div class="tools"><button id="bTopics">Topics</button><button id="bSearch">Search</button><button id="bAdd" aria-label="Add or suggest a fact">+</button><button id="bTheme" aria-label="Change theme">◐</button><button id="filt" hidden></button><span id="count"></span></div>
   </div>
   <div id="feed" tabindex="0"></div>
-  <div class="hint" id="hint">Swipe up for the next fact</div>
+  <div id="toast"></div><div class="hint" id="hint">Swipe up for the next fact</div>
 </div>
 <div id="sheet" hidden><div class="panel">
 <button class="x" id="close" aria-label="Close">✕</button>
 <section id="sTopics"><h2>Pick your topics</h2><p>You'll see more of these, plus the odd surprise. Skip this to see everything.</p><div id="chips"></div>
 <div class="row"><button id="topicsClear">Clear</button><button class="go" id="topicsSave">Show my feed</button></div></section>
-<section id="sAdd" hidden><h2>Add your own facts</h2><p>One per line. They appear only in your feed, on this device.</p>
+<section id="sAdd" hidden><h2>Add your own facts</h2><p>One per line. "Add for me" keeps them on this device. "Suggest to site" sends your first line to the site owner through GitHub (a free GitHub account is needed).</p>
 <textarea id="newFacts" rows="5" maxlength="3000" placeholder="Octopuses have three hearts."></textarea>
 <input type="text" id="newCat" maxlength="24" placeholder="Topic (optional, default: Mine)">
 <input type="file" id="file" accept=".json,.txt"><div id="addMsg"></div>
-<div class="row"><button id="clearMine">Remove mine</button><button class="go" id="addSave">Add</button></div></section>
+<div class="row"><button id="clearMine">Remove mine</button><button id="suggest">Suggest to site</button><button class="go" id="addSave">Add for me</button></div></section>
 <section id="sAuth" hidden><h2>Who's scrolling?</h2><p>Profiles live on this device only. Nothing is uploaded.</p>
 <div id="profiles"></div>
 <div id="pinRow" hidden><input type="password" id="pinIn" inputmode="numeric" maxlength="12" placeholder="PIN"><div class="row"><button class="go" id="pinGo">Unlock</button></div></div>
 <h3>New profile</h3><input type="text" id="nuName" maxlength="16" placeholder="Name"><input type="password" id="nuPin" inputmode="numeric" maxlength="12" placeholder="PIN (optional)">
 <div class="row"><button id="guest">Continue as guest</button><button class="go" id="create">Create</button></div><div id="authMsg"></div></section>
+<section id="sSearch" hidden><h2>Search &amp; filter</h2><input type="text" id="q" placeholder="Search facts" autocomplete="off"><div id="fchips"></div><div id="results"></div></section>
 <section id="sMe" hidden><h2 id="meName"></h2><p id="meStats"></p><h3>Theme</h3><div id="themes"></div>
 <div class="row" style="justify-content:flex-start"><button id="exp">Back up</button><button id="imp">Restore</button><button id="switch">Switch profile</button></div>
 <input type="file" id="impFile" accept=".json" hidden><div id="meMsg"></div></section>
@@ -113,8 +124,8 @@ const THEMES={
  sorbet:{label:"Sorbet",fg:"#14110f",on:"#fff",bg:h=>`radial-gradient(70% 50% at 10% 5%,hsl(${(h+40)%360} 100% 78%),transparent 70%),radial-gradient(60% 50% at 95% 80%,hsl(${(h+330)%360} 100% 84%),transparent 70%),hsl(${h} 90% 92%)`},
  dusk:{label:"Dusk",fg:"#fff4e6",on:"#2a1230",bg:h=>`radial-gradient(80% 55% at 85% 10%,hsl(${(h+150)%360} 85% 62% / .55),transparent 70%),radial-gradient(70% 50% at 5% 85%,hsl(${(h+30)%360} 80% 50% / .5),transparent 70%),linear-gradient(170deg,hsl(${h} 50% 24%),hsl(${(h+30)%360} 55% 11%))`}};
 const bg=c=>(THEMES[theme]||THEMES.aurora).bg(hue(c));
-let custom=[],picks=[],learn={},FACTS=[],liked=new Set(),saved=new Set(),seen=0,shared=0,theme="aurora",tab="all",shown=new Set();
-function loadUser(){custom=store.get("custom",[]);picks=store.get("picks",[]);learn=store.get("learn",{});liked=new Set(store.get("liked",[]));saved=new Set(store.get("saved",[]));seen=store.get("seen",0);shared=store.get("shared",0);theme=store.get("theme","aurora")}
+let custom=[],picks=[],learn={},FACTS=[],liked=new Set(),saved=new Set(),seen=0,shared=0,muted=new Set(),theme="aurora",tab="all",shown=new Set();
+function loadUser(){custom=store.get("custom",[]);picks=store.get("picks",[]);learn=store.get("learn",{});liked=new Set(store.get("liked",[]));saved=new Set(store.get("saved",[]));seen=store.get("seen",0);shared=store.get("shared",0);muted=new Set(store.get("muted",[]));theme=store.get("theme","aurora")}
 const feed=$("feed"),count=$("count"),hint=$("hint"),sheet=$("sheet");
 function build(){FACTS=[...BASE,...custom].map(f=>({category:f.category||"Mine",fact:f.fact}));FACTS.forEach(f=>f.id=hash(f.fact))}
 build();
@@ -124,7 +135,7 @@ build();
    12% of picks ignore weights completely, so surprises never stop. */
 const weight=c=>clamp((picks.length?(picks.includes(c)||c==="Mine"?4:1):1)+(learn[c]||0),.3,10);
 const bump=(c,v)=>{learn[c]=clamp((learn[c]||0)+v,-2,4);store.set("learn",learn)};
-const pool=()=>tab==="saved"?FACTS.filter(f=>saved.has(f.id)):FACTS;
+const pool=()=>(tab==="saved"?FACTS.filter(f=>saved.has(f.id)):FACTS).filter(f=>!muted.has(f.id)&&(!filterCat||f.category===filterCat));
 function pick(){
   const all=pool();let av=all.filter(f=>!shown.has(f.id));
   if(!av.length){shown.clear();av=all}
@@ -142,7 +153,7 @@ function card(f){
   const el=document.createElement("section");
   el.className="card";el.dataset.id=f.id;el.dataset.cat=f.category;el.style.background=bg(f.category);
   el.innerHTML=`<div class="deco"></div><div class="cat"></div><p class="fact"></p>
-  <div class="rail"><div><button data-act="like" aria-label="Like">♥</button></div><div><button data-act="save" aria-label="Save">★</button></div><div><button data-act="share" aria-label="Share">↗</button></div></div>`;
+  <div class="rail"><div><button data-act="like" aria-label="Like">♥</button></div><div><button data-act="save" aria-label="Save">★</button></div><div><button data-act="share" aria-label="Share">↗</button></div><div><button data-act="less" aria-label="Show less like this">−</button></div></div>`;
   el.querySelector(".cat").textContent=(ICON[f.category]||"✨")+" "+f.category;
   el.querySelector(".fact").textContent=f.fact;
   sync(el);io.observe(el);return el;
@@ -152,7 +163,7 @@ function sync(el){
   el.querySelector("[data-act=save]").classList.toggle("on",saved.has(el.dataset.id));
 }
 function more(n=6){
-  if(!pool().length){feed.innerHTML='<div class="empty">Nothing saved yet. Tap ★ on a fact to keep it.</div>';return}
+  if(!pool().length){feed.innerHTML=`<div class="empty">${tab==="saved"&&!filterCat?"Nothing saved yet. Tap ★ on a fact to keep it.":"No facts match. Try another filter."}</div>`;return}
   for(let i=0;i<n;i++)feed.append(card(pick()));
 }
 function refresh(first){
@@ -188,6 +199,7 @@ feed.addEventListener("click",async e=>{
     const id=el.dataset.id,act=btn.dataset.act,c=el.dataset.cat;
     if(act==="like"){liked.has(id)?liked.delete(id):(liked.add(id),bump(c,.5));persist();sync(el)}
     if(act==="save"){saved.has(id)?saved.delete(id):(saved.add(id),bump(c,.8));persist();sync(el)}
+    if(act==="less"){muted.add(id);store.set("muted",[...muted]);bump(c,-.8);toast("Got it. Showing less like this.");feed.scrollBy({top:feed.clientHeight,behavior:"smooth"})}
     if(act==="share"){
       const text=el.querySelector(".fact").textContent+"\n— Factsagram";
       try{navigator.share?await navigator.share({text}):await navigator.clipboard.writeText(text);shared++;store.set("shared",shared)}catch(_){}
@@ -211,7 +223,7 @@ function drawChips(){
     b.onclick=()=>{sel.has(c)?sel.delete(c):sel.add(c);b.classList.toggle("on")};box.append(b);
   });
 }
-function openSheet(n){sheet.hidden=false;for(const[k,id]of[["t","sTopics"],["a","sAdd"],["u","sAuth"],["m","sMe"]])$(id).hidden=n!==k;$("addMsg").textContent="";if(n==="t")drawChips();if(n==="u")drawProfiles();if(n==="m")drawMe()}
+function openSheet(n){sheet.hidden=false;for(const[k,id]of[["t","sTopics"],["a","sAdd"],["u","sAuth"],["m","sMe"],["s","sSearch"]])$(id).hidden=n!==k;$("addMsg").textContent="";if(n==="t")drawChips();if(n==="u")drawProfiles();if(n==="m")drawMe();if(n==="s")drawExplore()}
 function closeSheet(){if(!NS)return;sheet.hidden=true;store.set("onboarded",1)}
 $("bTopics").onclick=()=>openSheet("t");$("bAdd").onclick=()=>openSheet("a");$("close").onclick=closeSheet;
 sheet.onclick=e=>{if(e.target===sheet)closeSheet()};
@@ -265,7 +277,7 @@ function migrate(name){
 function login(name){
   NS="fa:u:"+name.toLowerCase()+":";who=name;
   try{localStorage.setItem("fa:last",name);sessionStorage.setItem("fa:sess",name)}catch(e){}
-  loadUser();build();applyTheme();$("bMe").textContent=name[0].toUpperCase();showCount();
+  loadUser();build();applyTheme();setFilter("");$("bMe").textContent=name[0].toUpperCase();showCount();
   const first=!store.get("onboarded")&&!picks.length;
   closeSheet();refresh();if(first)openSheet("t");
 }
@@ -295,7 +307,7 @@ function drawMe(){
 }
 $("bTheme").onclick=()=>{const ks=Object.keys(THEMES);theme=ks[(ks.indexOf(theme)+1)%ks.length];store.set("theme",theme);applyTheme()};
 $("exp").onclick=()=>{
-  const d={v:1,name:who,data:{liked:[...liked],saved:[...saved],seen,shared,custom,picks,learn,theme}};
+  const d={v:1,name:who,data:{muted:[...muted],liked:[...liked],saved:[...saved],seen,shared,custom,picks,learn,theme}};
   const a=document.createElement("a");a.href=URL.createObjectURL(new Blob([JSON.stringify(d)],{type:"application/json"}));
   a.download=`factsagram-${who}.json`;a.click();setTimeout(()=>URL.revokeObjectURL(a.href),2000);
 };
@@ -303,7 +315,7 @@ $("imp").onclick=()=>$("impFile").click();
 $("impFile").onchange=async e=>{
   try{
     const d=JSON.parse(await e.target.files[0].text()).data;
-    liked=new Set([...liked,...(d.liked||[])]);saved=new Set([...saved,...(d.saved||[])]);
+    liked=new Set([...liked,...(d.liked||[])]);saved=new Set([...saved,...(d.saved||[])]);muted=new Set([...muted,...(d.muted||[])]);store.set("muted",[...muted]);
     seen=Math.max(seen,d.seen||0);shared=Math.max(shared,d.shared||0);
     const have=new Set(custom.map(c=>c.fact));custom=[...custom,...(d.custom||[]).filter(c=>c&&c.fact&&!have.has(c.fact))];
     if(d.picks&&!picks.length)picks=d.picks;if(THEMES[d.theme])theme=d.theme;
@@ -317,6 +329,40 @@ $("impFile").onchange=async e=>{
 fetch("facts.json",{cache:"no-cache"}).then(r=>r.ok?r.json():Promise.reject()).then(j=>{
   if(Array.isArray(j)&&j.some(x=>x&&x.fact)){BASE=j.filter(x=>x&&x.fact);build();if(NS&&sheet.hidden&&feed.scrollTop<10)refresh()}
 }).catch(()=>{});
+
+/* Search, category filter, toast, suggestions */
+let filterCat="";
+function toast(m){const t=$("toast");t.textContent=m;t.classList.add("show");clearTimeout(toast.t);toast.t=setTimeout(()=>t.classList.remove("show"),1800)}
+function setFilter(c){filterCat=c;const f=$("filt");f.hidden=!c;f.textContent=c+" ✕"}
+$("filt").onclick=()=>{setFilter("");refresh()};
+function drawExplore(){
+  const box=$("fchips");box.innerHTML="";
+  ["",...[...new Set(FACTS.map(f=>f.category))].sort()].forEach(c=>{
+    const b=document.createElement("button");b.textContent=c||"All";b.className=c===filterCat?"on":"";
+    b.onclick=()=>{setFilter(c);refresh();drawExplore()};box.append(b);
+  });
+  drawResults();
+}
+function drawResults(){
+  const q=$("q").value.trim().toLowerCase(),box=$("results");box.innerHTML="";
+  if(!q&&!filterCat){box.textContent="Type to search, or pick a category to see only that topic.";return}
+  const hits=FACTS.filter(f=>!muted.has(f.id)&&(!filterCat||f.category===filterCat)&&(!q||(f.fact+" "+f.category).toLowerCase().includes(q)));
+  if(!hits.length){box.textContent="No facts found.";return}
+  hits.slice(0,25).forEach(f=>{
+    const b=document.createElement("button"),s=document.createElement("small");b.className="res";s.textContent=f.category;
+    b.append(s,f.fact);b.onclick=()=>{closeSheet();refresh(f)};box.append(b);
+  });
+  if(hits.length>25){const m=document.createElement("p");m.textContent=`+${hits.length-25} more. Keep typing to narrow it down.`;box.append(m)}
+}
+$("q").oninput=drawResults;$("bSearch").onclick=()=>openSheet("s");
+const REPO="vedanttrivedidev/factsagram";
+$("suggest").onclick=()=>{
+  const fact=$("newFacts").value.split(/\n+/).map(s=>s.trim()).find(Boolean);
+  if(!fact||fact.length<10)return $("addMsg").textContent="Write one fact (10+ characters) first.";
+  const cat=($("newCat").value.trim()||"Community").slice(0,24);
+  const body=`Category: ${cat}\nFact: ${fact.slice(0,280)}\n\n(Sent from the Factsagram app)`;
+  window.open(`https://github.com/${REPO}/issues/new?labels=suggestion&title=${encodeURIComponent("Fact suggestion: "+fact.slice(0,60))}&body=${encodeURIComponent(body)}`,"_blank","noopener");
+};
 
 applyTheme();
 const last=localStorage.getItem("fa:last"),acc=last&&accs()[last.toLowerCase()];
